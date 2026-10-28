@@ -30,7 +30,7 @@ public class ChangeCalc {
 		System.out.println("1천원권" + change1k +"매");
 		System.out.println("오백원" + change500 +"개");
 		System.out.println("백원" + change100 +"개");
-		System.out.println("백원" + change50 +"개");
+		System.out.println("오십원" + change50 +"개");
 		System.out.println("십원" + change10 +"개");
 		System.out.println("일원" + change1 +"개\n입니다.");
 		

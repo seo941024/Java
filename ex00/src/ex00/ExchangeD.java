@@ -10,7 +10,7 @@ public class ExchangeD {
 		double Dnumber;
 		Dnumber = (double)number/1200;
 			System.out.println(number + "원은 $"+ Dnumber+"입니다.");
-			System.out.printf("%d원은 $%.2f입니다.", number, Dnumber); /*"{number} + 원은 {Dnumber}입니다."*/ // 첫번째온느게 문자열
+			System.out.printf("%.0f원은 $%.2f입니다.", number, Dnumber); /*"{number} + 원은 {Dnumber}입니다."*/ // 첫번째온느게 문자열
 		
 		scanner.close();
 	
