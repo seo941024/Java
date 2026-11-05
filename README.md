@@ -1,15 +1,15 @@
-# Java 수업 실습
+# Java 기본 문법과 웹 애플리케이션
 
-서지섭의 Java 수업 실습 저장소. 콘솔 프로그램으로 기본 문법과 객체지향을 익힌 뒤, 서블릿과 JSP, Spring MVC와 MyBatis로 회원 관리 웹 애플리케이션을 단계별로 구현한 기록.
+서지섭의 Java 학습 저장소. 콘솔 프로그램으로 기본 문법과 객체지향을 익힌 뒤, 서블릿과 JSP, Spring MVC와 MyBatis로 회원 관리 웹 애플리케이션을 단계별로 구현한 기록.
 
 - 언어: Java 11, pro26과 pro27은 Eclipse 설정상 Java 1.8
 - 개발 도구: Eclipse
-- 웹 실습: `javax.servlet` 기반 서블릿·JSP, Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2
+- 웹: `javax.servlet` 기반 서블릿·JSP, Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2
 - 데이터베이스: Oracle, `t_member` 회원 테이블
 
 ## 폴더 구성
 
-| 폴더 | 주제 | 파일 수 | 주요 실습 |
+| 폴더 | 주제 | 파일 수 | 주요 내용 |
 |---|---|---|---|
 | `ex00/src/ex00` | 변수, 연산자, 조건문, 입력 | 21 | 형 변환, 비트·논리 연산, if·switch 학점 계산, Scanner 입력 |
 | `ex00/src/ex01` | 반복문, 배열, 예외, 클래스 기초 | 31 | for·while·do-while, 2차원 비정방 배열, try-catch, 생성자와 this, static 멤버 |
@@ -34,7 +34,7 @@
 
 파일 수는 `.java` 기준.
 
-## 콘솔 실습 내용
+## 콘솔 프로그램
 
 ### ex00 기본 문법
 
@@ -75,7 +75,7 @@
 - `File` 클래스로 경로 정보 확인, 디렉토리 생성·이름 변경·목록 출력
 - 파일 경로는 `c:\Temp`, `c:\windows\system.ini` 고정
 
-## 웹 실습 내용
+## 웹 애플리케이션
 
 ### 서블릿 단계: pro05 ~ pro10
 
@@ -83,7 +83,7 @@
 - `doGet`·`doPost`를 `doHandle` 하나로 모아 요청 방식과 무관하게 처리
 - 회원 DAO의 연결 방식 변화: `DriverManager` 직접 연결에서 JNDI `DataSource` 커넥션 풀로 변경
 - `PreparedStatement`와 `?` 바인딩으로 회원 등록·삭제 쿼리 실행
-- redirect와 forward 비교: redirect 방식에서는 `request` 속성이 다음 서블릿에 전달되지 않고, forward 방식에서만 전달되는 구조로 실습
+- redirect와 forward 비교: redirect 방식에서는 `request` 속성이 다음 서블릿에 전달되지 않고, forward 방식에서만 전달되는 구조 확인
 - 로그인 상태 유지: 로그인 성공 시 세션에 `isLogon`과 아이디 저장, 회원 정보 화면에서 세션 확인 후 미로그인 시 로그인 화면으로 이동
 - 필터: 모든 요청에 UTF-8 인코딩 적용, 컨텍스트 경로와 실제 경로 출력
 
@@ -113,7 +113,7 @@
 
 ## 실행 결과
 
-콘솔 실습을 JDK 11.0.14로 컴파일·실행한 결과. 노란색은 키보드 입력값.
+콘솔 프로그램을 JDK 11.0.14로 컴파일·실행한 결과. 노란색은 키보드 입력값.
 
 ### 기본 문법
 
@@ -145,7 +145,7 @@
 
 ## 실행 방법
 
-### 콘솔 실습
+### 콘솔 프로그램
 
 JDK 11 이상 필요. `ex00` 폴더에서 전체 소스를 한 번에 컴파일한 뒤 패키지 이름을 포함한 클래스 이름으로 실행.
 
@@ -155,9 +155,9 @@ javac -encoding UTF-8 -d out $(find src -name "*.java")
 java -Dfile.encoding=UTF-8 -cp out ex01.ForSample
 ```
 
-`ex04`의 일부 실습은 `c:\Temp` 폴더에 파일을 만들거나 이름을 바꾸므로 실행 전 경로 확인 필요.
+`ex04`의 일부 예제는 `c:\Temp` 폴더에 파일을 만들거나 이름을 바꾸므로 실행 전 경로 확인 필요.
 
-### 웹 실습
+### 웹 애플리케이션
 
 1. Eclipse에서 `pro` 폴더를 Dynamic Web Project로 가져오기
 2. `javax.servlet` 패키지를 사용하므로 Tomcat 9 이하 서버에 프로젝트 추가
@@ -177,7 +177,7 @@ java -Dfile.encoding=UTF-8 -cp out ex01.ForSample
 
 - `ex00/src/ex00/ExchangeD.java`: `double` 값을 `%d` 형식으로 출력해 `IllegalFormatConversionException` 발생, `%.0f`로 수정
 - `ChangeCalc.java`: 50원 단위 결과를 "백원"으로 출력, "오십원"으로 수정
-- `CircleArea.java`: 원주율을 `int`로 변환해 314가 아닌 300 출력. 올바른 계산식을 주석으로 남긴 형 변환 손실 실습이라 유지
+- `CircleArea.java`: 원주율을 `int`로 변환해 314가 아닌 300 출력. 올바른 계산식을 주석으로 남긴 형 변환 손실 예제라 유지
 - `pro17`: 컨트롤러가 `/test03/memberForm.jsp`로 이동하지만 해당 JSP 파일 없음
 - `pro10/sec04/ex02/LoginTest2.java`: 응답 HTML 출력이 `<script>` 태그 중간에서 끝남
-- 웹 실습은 Tomcat과 Oracle 환경에서 실행하지 않아 화면 결과 미확인
+- 웹 애플리케이션은 Tomcat과 Oracle 환경에서 실행하지 않아 화면 결과 미확인
