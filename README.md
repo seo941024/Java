@@ -7,6 +7,17 @@
 - 웹: `javax.servlet` 기반 서블릿·JSP, Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2
 - 데이터베이스: Oracle, `t_member` 회원 테이블
 
+## 학습 범위
+
+| 단계 | 학습 내용 |
+|---|---|
+| 기본 문법 | 자료형과 형 변환, 연산자, 조건문·반복문, 배열, 예외 처리, Scanner 입력 |
+| 객체지향 | 클래스·생성자·static 멤버, 상속·다형성, 추상 클래스·인터페이스, Object·String·Wrapper 클래스 |
+| 컬렉션·입출력 | ArrayList·LinkedList·HashMap, 제네릭 클래스, 문자·바이트 스트림 파일 입출력 |
+| 서블릿·JSP | 요청·응답 처리, redirect와 forward 비교, 쿠키·세션 로그인, 필터, EL·JSTL, MVC 패턴 |
+| DB 연동 | JDBC와 JNDI 커넥션 풀, PreparedStatement 바인딩 쿼리 |
+| Spring·MyBatis | Controller·Service·DAO 계층 분리, 의존성 주입, 애너테이션 요청 매핑, SQL 매퍼, Tiles 공통 레이아웃 |
+
 ## 폴더 구성
 
 | 폴더 | 주제 | 파일 수 | 주요 내용 |
@@ -19,7 +30,7 @@
 | `basics` | 기본 문법 | 21 | `ex00/src/ex00`과 같은 파일 구성, 4개 파일만 내용 차이 |
 | `ex01` | 빈 Eclipse 프로젝트 | 1 | `module-info.java`만 존재 |
 | `pro05`, `pro06` | 서블릿 기초 | 2, 10 | 서블릿 생명주기, GET·POST 요청 처리, 폼 데이터 수신, 환율 계산기, 구구단 |
-| `pro07` | 서블릿과 DB 연동 | 9 | JDBC 직접 연결, JNDI 커넥션 풀, 회원 조회·등록·삭제 |
+| `pro07` | 서블릿과 DB 연동 | 9 | JDBC DriverManager 연결, JNDI 커넥션 풀, 회원 조회·등록·삭제 |
 | `pro08` | 페이지 이동 | 18 | sendRedirect, Refresh, location, RequestDispatcher forward, request 속성 전달 |
 | `pro09` | 쿠키와 세션 | 10 | Cookie 저장·조회, HttpSession, 세션 유효 시간, encodeURL, DB 기반 로그인 |
 | `pro10` | 서블릿 고급 기능 | 9 | ServletContext·session·request 속성 범위, URL 매핑 방식, 필터, 세션 바인딩 리스너 |
@@ -59,14 +70,14 @@
 - 추상 클래스와 인터페이스: 추상 메소드 구현, default 메소드, 인터페이스 상속, 클래스 상속과 인터페이스 다중 구현 동시 사용
 - Object 클래스: `toString()`, `equals()` 재정의로 좌표 비교와 사각형 넓이 비교
 - 주요 클래스: String, StringBuffer, StringTokenizer, Math, Calendar, Wrapper 클래스와 오토박싱
-- `MyStringEx`: String의 `concat`, `trim`, `replace`를 문자 단위 반복문으로 직접 구현
+- `MyStringEx`: String의 `concat`, `trim`, `replace`를 문자 단위 반복문으로 구현
 
 ### ex03 컬렉션과 제네릭
 
 - Vector와 ArrayList의 삽입·삭제·크기·용량 확인
 - LinkedList를 `Collections.sort`, `reverse`, `binarySearch`로 정렬·역순·검색
 - HashMap으로 영한 사전, 점수표, 학생 정보 검색 구현
-- `GStack<T>`: `Object` 배열 기반 제네릭 스택 클래스 직접 구현, 제네릭 메소드로 스택 뒤집기
+- `GStack<T>`: `Object` 배열 기반 제네릭 스택 클래스 구현, 제네릭 메소드로 스택 뒤집기
 
 ### ex04 파일 입출력
 
@@ -81,7 +92,7 @@
 
 - `web.xml` 매핑에서 `@WebServlet` 애너테이션 매핑으로 전환
 - `doGet`·`doPost`를 `doHandle` 하나로 모아 요청 방식과 무관하게 처리
-- 회원 DAO의 연결 방식 변화: `DriverManager` 직접 연결에서 JNDI `DataSource` 커넥션 풀로 변경
+- 회원 DAO의 연결 방식 변화: `DriverManager` 연결에서 JNDI `DataSource` 커넥션 풀로 변경
 - `PreparedStatement`와 `?` 바인딩으로 회원 등록·삭제 쿼리 실행
 - redirect와 forward 비교: redirect 방식에서는 `request` 속성이 다음 서블릿에 전달되지 않고, forward 방식에서만 전달되는 구조 확인
 - 로그인 상태 유지: 로그인 성공 시 세션에 `isLogon`과 아이디 저장, 회원 정보 화면에서 세션 확인 후 미로그인 시 로그인 화면으로 이동
@@ -100,7 +111,7 @@
 |---|---|---|---|
 | pro21 | XML의 SimpleUrlHandlerMapping, PropertiesMethodNameResolver | XML 빈 등록 | 없음 |
 | pro22 | XML 매핑 | XML setter 주입 | JdbcTemplate, RowMapper |
-| pro23 | `@WebServlet` | 직접 생성 | MyBatis SqlSession 직접 생성 |
+| pro23 | `@WebServlet` | `new` 생성 | MyBatis SqlSession 수동 생성 |
 | pro24 | XML 매핑 | XML setter 주입 | Spring 관리 SqlSessionTemplate |
 | pro26 | `@RequestMapping` | `@Autowired`, `component-scan` | SqlSessionTemplate |
 | pro27 | `@RequestMapping` | `@Autowired`, `component-scan` | SqlSessionTemplate, Tiles 뷰 |
