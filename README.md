@@ -2,6 +2,8 @@
 
 서지섭의 Java 학습 저장소. 콘솔 프로그램으로 기본 문법과 객체지향을 익힌 뒤, 서블릿과 JSP, Spring MVC와 MyBatis로 회원 관리 웹 애플리케이션을 단계별로 구현한 기록.
 
+폴더마다 README에 다룬 개념의 뜻, 파일별 내용, 웹 애플리케이션 폴더는 요청 흐름까지 정리. 아래 폴더 구성 표의 이름을 누르면 해당 README로 이동.
+
 - 언어: Java 11, pro26과 pro27은 Eclipse 설정상 Java 1.8
 - 개발 도구: Eclipse
 - 웹: `javax.servlet` 기반 서블릿·JSP, Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2
@@ -20,30 +22,28 @@
 
 ## 폴더 구성
 
-| 폴더 | 주제 | 파일 수 | 주요 내용 |
-|---|---|---|---|
-| `ex00/src/ex00` | 변수, 연산자, 조건문, 입력 | 21 | 형 변환, 비트·논리 연산, if·switch 학점 계산, Scanner 입력 |
-| `ex00/src/ex01` | 반복문, 배열, 예외, 클래스 기초 | 31 | for·while·do-while, 2차원 비정방 배열, try-catch, 생성자와 this, static 멤버 |
-| `ex00/src/ex02` | 상속, 다형성, 인터페이스, 주요 클래스 | 20 | 메소드 오버라이딩, 추상 클래스, 인터페이스 다중 구현, Object·String·Wrapper 클래스 |
-| `ex00/src/ex03` | 컬렉션, 제네릭 | 11 | Vector, ArrayList, LinkedList, HashMap, Iterator, 제네릭 스택 |
-| `ex00/src/ex04` | 파일 입출력 | 7 | FileReader·FileWriter, 바이트 스트림, 버퍼 스트림, File 클래스 |
-| `basics` | 기본 문법 | 21 | `ex00/src/ex00`과 같은 파일 구성, 4개 파일만 내용 차이 |
-| `ex01` | 빈 Eclipse 프로젝트 | 1 | `module-info.java`만 존재 |
-| `pro05`, `pro06` | 서블릿 기초 | 2, 10 | 서블릿 생명주기, GET·POST 요청 처리, 폼 데이터 수신, 환율 계산기, 구구단 |
-| `pro07` | 서블릿과 DB 연동 | 9 | JDBC DriverManager 연결, JNDI 커넥션 풀, 회원 조회·등록·삭제 |
-| `pro08` | 페이지 이동 | 18 | sendRedirect, Refresh, location, RequestDispatcher forward, request 속성 전달 |
-| `pro09` | 쿠키와 세션 | 10 | Cookie 저장·조회, HttpSession, 세션 유효 시간, encodeURL, DB 기반 로그인 |
-| `pro10` | 서블릿 고급 기능 | 9 | ServletContext·session·request 속성 범위, URL 매핑 방식, 필터, 세션 바인딩 리스너 |
-| `pro14` | JSP 표현 언어 | 1 | EL 연산, param 객체, useBean·setProperty, jsp:forward |
-| `pro17` | MVC 패턴 | 7 | 컨트롤러 서블릿, `*.do` 요청 분기, JSTL 목록 화면, 회원 수정·삭제 |
-| `pro21` | Spring MVC 기초 | 2 | DispatcherServlet, SimpleUrlHandlerMapping, MultiActionController, ViewResolver |
-| `pro22` | Spring JDBC | 7 | Controller·Service·DAO 계층 분리, setter 주입, JdbcTemplate |
-| `pro23` | MyBatis 단독 사용 | 9 | SqlMapConfig, 매퍼 XML, resultMap, 조회·삽입·수정·삭제 |
-| `pro24` | Spring과 MyBatis 연동 | 7 | SqlSessionFactoryBean, SqlSessionTemplate, 매퍼 위치 설정 |
-| `pro26` | 애너테이션 기반 Spring MVC | 9 | @Controller, @RequestMapping, @RequestParam, @ModelAttribute, @Autowired, @Transactional |
-| `pro27` | Tiles 레이아웃 | 7 | 공통 헤더·사이드·푸터 레이아웃, 로그인·로그아웃 세션 처리 |
-
-파일 수는 `.java` 기준.
+| 폴더 | 주제 | 주요 내용 |
+|---|---|---|
+| [ex00/src/ex00](ex00#ex00-패키지--변수-연산자-조건문-입력) | 변수, 연산자, 조건문, 입력 | 형 변환, 비트·논리 연산, if·switch 학점 계산, Scanner 입력 |
+| [ex00/src/ex01](ex00#ex01-패키지--반복문-배열-예외-처리-클래스와-객체) | 반복문, 배열, 예외, 클래스 구성 | for·while·do-while, 2차원 비정방 배열, try-catch, 생성자와 this, static 멤버 |
+| [ex00/src/ex02](ex00#ex02-패키지--상속-다형성-인터페이스-주요-클래스) | 상속, 다형성, 인터페이스, 주요 클래스 | 메소드 오버라이딩, 추상 클래스, 인터페이스 다중 구현, Object·String·Wrapper 클래스 |
+| [ex00/src/ex03](ex00#ex03-패키지--컬렉션과-제네릭) | 컬렉션, 제네릭 | Vector, ArrayList, LinkedList, HashMap, Iterator, 제네릭 스택 |
+| [ex00/src/ex04](ex00#ex04-패키지--파일-입출력) | 파일 입출력 | FileReader·FileWriter, 바이트 스트림, 버퍼 스트림, File 클래스 |
+| [basics](basics) | 기본 문법 | `ex00/src/ex00`과 같은 파일 구성, 4개 파일만 내용 차이 |
+| [ex01](ex01) | 빈 Eclipse 프로젝트 | `module-info.java`만 존재 |
+| [pro05](pro05), [pro06](pro06) | 서블릿 요청 처리 | 서블릿 생명주기, GET·POST 요청 처리, 폼 데이터 수신, 환율 계산기, 구구단 |
+| [pro07](pro07) | 서블릿과 DB 연동 | JDBC DriverManager 연결, JNDI 커넥션 풀, 회원 조회·등록·삭제 |
+| [pro08](pro08) | 페이지 이동 | sendRedirect, Refresh, location, RequestDispatcher forward, request 속성 전달 |
+| [pro09](pro09) | 쿠키와 세션 | Cookie 저장·조회, HttpSession, 세션 유효 시간, encodeURL, DB 기반 로그인 |
+| [pro10](pro10) | 서블릿 고급 기능 | ServletContext·session·request 속성 범위, URL 매핑 방식, 필터, 세션 바인딩 리스너 |
+| [pro14](pro14) | JSP 표현 언어 | EL 연산, param 객체, useBean·setProperty, jsp:forward |
+| [pro17](pro17) | MVC 패턴 | 컨트롤러 서블릿, `*.do` 요청 분기, JSTL 목록 화면, 회원 수정·삭제 |
+| [pro21](pro21) | Spring MVC 요청 매핑 | DispatcherServlet, SimpleUrlHandlerMapping, MultiActionController, ViewResolver |
+| [pro22](pro22) | Spring JDBC | Controller·Service·DAO 계층 분리, setter 주입, JdbcTemplate |
+| [pro23](pro23) | MyBatis 단독 사용 | SqlMapConfig, 매퍼 XML, resultMap, 조회·삽입·수정·삭제 |
+| [pro24](pro24) | Spring과 MyBatis 연동 | SqlSessionFactoryBean, SqlSessionTemplate, 매퍼 위치 설정 |
+| [pro26](pro26) | 애너테이션 기반 Spring MVC | @Controller, @RequestMapping, @RequestParam, @ModelAttribute, @Autowired, @Transactional |
+| [pro27](pro27) | Tiles 레이아웃 | 공통 헤더·사이드·푸터 레이아웃, 로그인·로그아웃 세션 처리 |
 
 ## 콘솔 프로그램
 
@@ -55,13 +55,13 @@
 - 입력 검증: 범위를 벗어난 점수 입력 시 `continue`로 재입력 요청
 - 도형 판별: 점과 원의 거리 비교, 사각형 영역 판별, 세 변의 길이로 삼각형 성립 여부 판별
 
-### ex01 반복문, 배열, 예외, 클래스 기초
+### ex01 반복문, 배열, 예외, 클래스 구성
 
 - 반복문: for·while·do-while, `break`와 `continue`, 중첩 반복문 구구단
 - 별 도형 출력: 행·열 인덱스 조건식만으로 `*` 도형 출력
 - 배열: 배열을 매개변수로 전달해 원본 수정, 메소드에서 배열 반환, 행마다 길이가 다른 2차원 배열
 - 예외 처리: `ArithmeticException`, `ArrayIndexOutOfBoundsException`, `InputMismatchException`, `NumberFormatException` 처리와 재입력 흐름
-- 클래스 기초: 생성자 오버로딩, `this()`로 다른 생성자 호출, 객체 배열, 객체 참조 대입, `private static` 필드와 정적 메소드로 만든 환율 변환기
+- 클래스 구성: 생성자 오버로딩, `this()`로 다른 생성자 호출, 객체 배열, 객체 참조 대입, `private static` 필드와 정적 메소드로 만든 환율 변환기
 
 ### ex02 객체지향
 
