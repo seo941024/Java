@@ -38,6 +38,30 @@
 | sec04.ex02 | `/first7` | `/second7` | forward | forward 뒤 request 속성 `address` 조회 |
 | sec04.ex03 | `/member` | `/viewMembers` | forward | request 속성으로 회원 목록 전달 |
 
+## 실행 결과
+
+각 `first` 주소를 브라우저로 요청해 이동이 끝난 뒤의 화면. 표 머리의 화살표 오른쪽은 이동이 끝난 주소.
+
+| `/first` → `/second` | `/first2` → 1초 뒤 `/second2` |
+|---|---|
+| ![pro08 sendRedirect 결과](../docs/images/pro08_first.png) | ![pro08 Refresh 결과](../docs/images/pro08_first2.png) |
+| **`/first3` → `/second3`** | **`/first4` → `/second4?name=lee`** |
+| ![pro08 location.href 결과](../docs/images/pro08_first3.png) | ![pro08 쿼리 문자열 redirect 결과](../docs/images/pro08_first4.png) |
+| **`/first5` forward, 주소 유지** | **`/first6` → `/second6`** |
+| ![pro08 forward 결과](../docs/images/pro08_first5.png) | ![pro08 redirect 속성 전달 결과](../docs/images/pro08_first6.png) |
+| **`/first7` forward, 주소 유지** | **`/member` forward, 주소 유지** |
+| ![pro08 forward 속성 전달 결과](../docs/images/pro08_first7.png) | ![pro08 회원 목록 forward 결과](../docs/images/pro08_member.png) |
+
+curl로 받은 응답. redirect 방식은 302 상태와 `Location` 헤더, `Refresh` 헤더, 이동 스크립트만 보내고, forward 방식은 첫 주소에서 바로 200 응답 본문 수신.
+
+| sendRedirect, Refresh, location.href 응답 | forward 응답 |
+|---|---|
+| ![pro08 redirect 방식 curl 응답](../docs/images/pro08_curl_redirect.png) | ![pro08 forward 방식 curl 응답](../docs/images/pro08_curl_forward.png) |
+
+request 속성 전달 비교. redirect 쪽 `/first6`은 302 응답 뒤 새 요청이라 `주소: null`, forward 쪽 `/first7`은 같은 request를 이어받아 `주소: 서울시 성북구`.
+
+![pro08 request 속성 전달 curl 응답](../docs/images/pro08_curl_binding.png)
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

@@ -39,6 +39,18 @@ sec02.ex02 회원 정보 수정 기준.
 | `/modMember.do` | 회원 정보 수정, `msg=modified` | forward로 `/listMembers.do` |
 | `/delMember.do` | 회원 삭제, `msg=deleted` | forward로 `/listMembers.do` |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 로컬 Oracle `t_member` 테이블 조회 결과이며, 수정·삭제·등록 요청은 DB 내용을 바꾸므로 캡처 대상에서 제외.
+
+`/listMembers.do` 회원 목록. 가입일 역순 정렬과 행마다 수정·삭제 링크.
+
+![pro17 회원 목록](../docs/images/pro17_list.png)
+
+| `/modMemberForm.do?id=hong` 수정 폼 | `/MemberController` sec01 목록 |
+|---|---|
+| ![pro17 회원 수정 폼](../docs/images/pro17_modform.png) | ![pro17 sec01 회원 목록](../docs/images/pro17_sec01_list.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

@@ -37,6 +37,30 @@ ex04 회원 추가 기준.
 | ex03 | `/mem3.do` | selectAllMemberList, selectMemberById, selectMemberByPwd | test02/search.jsp에서 검색, test02/listMembers.jsp 또는 test02/memberInfo.jsp |
 | ex04 | `/mem4.do` | selectAllMemberList, insertMember, insertMember2, updateMember, deleteMember | test03 폴더의 목록·가입·수정 화면 |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. MyBatis 3.4.6 jar와 로컬 Oracle `t_member` 테이블로 실행.
+
+| ex01 `/mem.do` 회원 목록 | ex02 `/mem2.do` 이름 알림창 |
+|---|---|
+| ![pro23 mem.do 회원 목록](../docs/images/pro23_mem.png) | ![pro23 mem2.do 알림창](../docs/images/pro23_mem2.png) |
+
+ex03 검색. `search.jsp`에서 검색 방식을 고른 뒤 `/mem3.do` 요청.
+
+| 아이디 hong 검색 입력 | 아이디 검색 결과 memberInfo.jsp |
+|---|---|
+| ![pro23 검색 폼 입력](../docs/images/pro23_search_form.png) | ![pro23 아이디 검색 결과](../docs/images/pro23_search_id.png) |
+| **비밀번호 1212 검색 결과** | **`/mem3.do?action=listMembers` 전체 목록** |
+| ![pro23 비밀번호 검색 결과](../docs/images/pro23_search_pwd.png) | ![pro23 mem3.do 전체 목록](../docs/images/pro23_mem3_list.png) |
+
+ex04 `/mem4.do` 목록과 test03 폼. 삽입·수정·삭제는 DB를 바꾸므로 폼 화면까지만 확인.
+
+| `/mem4.do?action=listMembers` | memberForm.jsp 입력 화면 | modMember.jsp |
+|---|---|---|
+| ![pro23 mem4.do 회원 목록](../docs/images/pro23_mem4_list.png) | ![pro23 회원 가입 폼 입력](../docs/images/pro23_memberform.png) | ![pro23 회원 수정 폼](../docs/images/pro23_modmember.png) |
+
+`/mem2.do` 화면의 `콘솔 출력` 상자는 페이지 요소가 아닌 캡처 때 `alert()` 문구를 옮겨 적은 상자.
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

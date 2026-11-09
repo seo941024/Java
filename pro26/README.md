@@ -46,6 +46,32 @@ XML의 URL 매핑과 setter 주입을 `@Controller`, `@RequestMapping`, `@Autowi
 | `/member/removeMember.do` | GET | `@RequestParam("id")`로 받은 아이디 삭제 후 목록으로 redirect |
 | `/member/*Form.do` | GET | 요청 주소에서 뷰 이름을 만들어 폼 화면 표시 |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1, MyBatis 3.4.6, MyBatis-Spring 1.3.2 jar로 실행. 가입과 삭제는 DB 내용을 바꾸므로 목록과 입력 화면까지만 확인.
+
+| `/member/listMembers.do` 회원 목록 | `/member/memberForm.do` 입력 화면 |
+|---|---|
+| ![pro26 회원 목록](../docs/images/pro26_list.png) | ![pro26 회원 가입 폼 입력](../docs/images/pro26_memberform.png) |
+
+클래스 공통 경로 `/test` 아래 두 주소를 같은 뷰로 연결한 MainController 결과.
+
+| `/test/main1.do` | `/test/main2.do` |
+|---|---|
+| ![pro26 main1.do](../docs/images/pro26_main1.png) | ![pro26 main2.do](../docs/images/pro26_main2.png) |
+
+요청 값을 받는 방식별 로그인 결과. `login2.do`는 로그인 폼 전송, 나머지는 쿼리 문자열로 요청.
+
+| `/test/loginForm.do` 입력 | `login2.do` `@RequestParam` |
+|---|---|
+| ![pro26 로그인 폼 입력](../docs/images/pro26_loginform.png) | ![pro26 login2.do 결과](../docs/images/pro26_login2.png) |
+| **`login.do` `getParameter()`** | **`login3.do` `@RequestParam Map`** |
+| ![pro26 login.do 결과](../docs/images/pro26_login1.png) | ![pro26 login3.do 결과](../docs/images/pro26_login3.png) |
+| **`login4.do` `@ModelAttribute`** | **`login5.do` `Model` 고정값** |
+| ![pro26 login4.do 결과](../docs/images/pro26_login4.png) | ![pro26 login5.do 결과](../docs/images/pro26_login5.png) |
+
+`login5.do`는 요청 값 없이 컨트롤러가 `Model`에 넣은 hong, 홍길동 출력.
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

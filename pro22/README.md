@@ -40,6 +40,14 @@ Controller·Service·DAO를 인터페이스와 구현 클래스로 나누고 XML
 | memberDAO | MemberDAOImpl | dataSource | config/action-dataSource.xml |
 | dataSource | `SimpleDriverDataSource` | jdbc.properties 값 | config/action-dataSource.xml |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1 jar와 로컬 Oracle `t_member` 테이블로 실행. 가입하기 전송은 DB에 행을 추가하므로 입력 화면까지만 확인.
+
+| `/member/listMembers.do` 회원 목록 | 회원가입 링크로 연 `/member/memberForm.do` |
+|---|---|
+| ![pro22 회원 목록](../docs/images/pro22_list.png) | ![pro22 회원 가입 폼 입력](../docs/images/pro22_memberform.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

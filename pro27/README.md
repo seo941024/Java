@@ -37,6 +37,32 @@ Apache Tiles로 헤더, 사이드 메뉴, 본문, 푸터를 한 레이아웃에 
 | `/member/loginForm` | 로그인창 | member/loginForm.jsp | `/member/loginForm.do` |
 | `/member/memberForm` | 회원 가입창 | member/memberForm.jsp | `/member/memberForm.do` |
 
+## 실행 결과
+
+저장소 코드 그대로 Tomcat 9.0.118에 배포하면 DispatcherServlet 초기화 실패. 컨트롤러의 `@Autowired private MemberVO memberVO` 주입 대상인 MemberVO 빈이 없어 모든 `.do` 요청이 500 응답.
+
+![pro27 저장소 코드 그대로 배포한 결과](../docs/images/pro27_bean_error.png)
+
+아래 화면은 캡처용 배포 사본에서 다음 부분을 보완해 실행한 결과. 저장소의 소스 코드와 설정 파일은 그대로.
+
+- 배포 사본 `action-servlet.xml`에 `<bean id="memberVO" class="com.myspring.pro27.member.vo.MemberVO" />` 한 줄 추가
+- 배포 사본 `tiles_member.xml`의 DOCTYPE을 Tiles 2.2.2 jar에 들어 있는 2.1 DTD로 변경. 2.2 DTD 주소 `http://tiles.apache.org/dtds/tiles-config_2_2.dtd`가 현재 404 응답이라 정의 파일 읽기 실패
+- log4j는 `D:\JavaProgram\logs` 파일 appender를 뺀 콘솔 appender 설정으로 실행
+
+| `/main.do` 메인 화면 | `/member/listMembers.do` 회원 목록 |
+|---|---|
+| ![pro27 메인 화면](../docs/images/pro27_main.png) | ![pro27 회원 목록](../docs/images/pro27_list.png) |
+| **로그인 폼 입력** | **비밀번호 오류 뒤 `result=loginFailed` 알림** |
+| ![pro27 로그인 폼 입력](../docs/images/pro27_loginform.png) | ![pro27 로그인 실패 알림](../docs/images/pro27_login_fail.png) |
+| **로그인 성공 뒤 회원 목록, 헤더에 환영 문구와 로그아웃 링크** | **로그인 상태의 메인 화면** |
+| ![pro27 로그인 성공 뒤 회원 목록](../docs/images/pro27_login_ok.png) | ![pro27 로그인 상태 메인 화면](../docs/images/pro27_main_logon.png) |
+| **로그아웃 뒤 회원 목록** | **`/member/memberForm.do` 입력 화면** |
+| ![pro27 로그아웃 뒤 회원 목록](../docs/images/pro27_logout.png) | ![pro27 회원 가입 폼 입력](../docs/images/pro27_memberform.png) |
+
+로그인 실패 화면 아래 `콘솔 출력` 상자는 페이지 요소가 아닌 캡처 때 `alert()` 문구를 옮겨 적은 상자. 아래는 로그인 성공 뒤와 로그아웃 뒤 회원 목록을 요청할 때 컨트롤러가 남긴 log4j 콘솔 로그.
+
+![pro27 log4j 콘솔 출력](../docs/images/pro27_log4j_console.png)
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

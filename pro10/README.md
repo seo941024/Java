@@ -32,6 +32,28 @@ ServletContext, session, request에 값을 저장해 공유 범위를 비교하�
 | TestServlet2 | `/first/*` 디렉토리 패턴 | yellow | 컨텍스트 이름, 전체 경로, 매핑 이름, URI |
 | TestServlet3 | `*.do` 확장자 패턴, `/*` 매핑은 주석 | red | 컨텍스트 이름, 전체 경로, 매핑 이름, URI |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면.
+
+속성 범위 `/set` → `/get`. context 값만 남고, 세션 값은 `context` 이름으로 저장해 `session` 이름 조회 결과가 null, request 값은 새 요청이라 null.
+
+| `/set` | `/get` |
+|---|---|
+| ![pro10 속성 저장](../docs/images/pro10_set.png) | ![pro10 속성 조회](../docs/images/pro10_get.png) |
+
+URL 패턴별 서블릿.
+
+| `/first/test1` 정확한 경로 | `/first/base` 디렉토리 패턴 | `/base.do` 확장자 패턴 |
+|---|---|---|
+| ![pro10 TestServlet1](../docs/images/pro10_test1.png) | ![pro10 TestServlet2](../docs/images/pro10_test2.png) | ![pro10 TestServlet3](../docs/images/pro10_test3.png) |
+
+필터를 거친 로그인 `login.html` → `/login`. LoginTest의 인코딩 지정은 주석이지만 필터 덕분에 한글 이름 정상 출력.
+
+| 이름 홍길동 입력 | LoginTest 응답 |
+|---|---|
+| ![pro10 login.html 입력](../docs/images/pro10_login_form.png) | ![pro10 LoginTest 응답](../docs/images/pro10_login_result.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

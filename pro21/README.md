@@ -37,6 +37,26 @@ DispatcherServlet이 `*.do` 요청을 받아 XML에 등록한 컨트롤러로 �
 | `/test/memberForm.do` | UserController `memberForm()` | 없음 | memberForm.jsp |
 | `/test/memberinfo.do` | UserController `memberinfo()` | `id`, `pwd`, `name`, `email` | memberinfo.jsp |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 라이브러리는 4.1.1 버전 jar로 실행.
+
+로그인 폼 `/test/loginForm.jsp`에서 `/test/login.do` 요청. 컨트롤러는 `userID`, `passwd` 이름으로 값을 넘기지만 login.jsp는 `${id}`, `${pwd}`를 출력해 결과 표의 칸이 빈 상태.
+
+| 로그인 폼 입력 | `/test/login.do` 결과 |
+|---|---|
+| ![pro21 로그인 폼 입력](../docs/images/pro21_loginform.png) | ![pro21 login.do 결과](../docs/images/pro21_login_result.png) |
+
+![pro21 login.do 요청 때 콘솔 출력](../docs/images/pro21_login_console.png)
+
+회원 가입 폼 `/test/memberForm.do`에서 `/test/memberinfo.do` 요청.
+
+| 가입 폼 입력 | 가입 정보 출력 |
+|---|---|
+| ![pro21 회원 가입 폼 입력](../docs/images/pro21_memberform.png) | ![pro21 가입 정보 출력](../docs/images/pro21_memberinfo.png) |
+
+![pro21 가입 폼과 가입 정보 요청 콘솔 출력](../docs/images/pro21_member_console.png)
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

@@ -45,6 +45,24 @@
 | [CirclePoint.java](CirclePoint.java) | 원의 중심, 반지름, 점 좌표를 입력받아 점이 원 안, 경계, 바깥 중 어디인지 판별 | `(x-a)*(x-a)+(y-b)*(y-b) < r*r` |
 | [Triangle.java](Triangle.java) | 세 정수가 모두 양수이고 두 변의 합이 나머지 한 변보다 클 때 삼각형 성립 판정 | `a+b>c && a+c>b && b+c>a` |
 
+## 실행 결과
+
+`basics` 폴더의 소스를 JDK 11로 `out` 폴더에 컴파일한 뒤 `java -cp out ex00.클래스이름`으로 실행한 결과. 노란색 줄은 키보드 입력값.
+
+| 출력과 형 변환 · Hello, TypeConversion, testmath, CircleArea | 대입·증감, 비교·논리, 비트 연산 |
+|---|---|
+| ![basics 출력과 형 변환 실행 결과](../docs/images/basics_print_type.png) | ![basics 연산자 실행 결과](../docs/images/basics_operator.png) |
+| **입력값 계산 · 7384초, 57860원, 14 입력** | **점수 판정과 학점 계산** |
+| ![basics 입력값 계산 실행 결과](../docs/images/basics_input_calc.png) | ![basics 점수 판정 실행 결과](../docs/images/basics_grade.png) |
+| **switch 문과 Scanner 입력** | **점·원·삼각형 판별** |
+| ![basics switch 문과 Scanner 실행 결과](../docs/images/basics_switch_scanner.png) | ![basics 도형 판별 실행 결과](../docs/images/basics_geometry.png) |
+
+- `TypeConversion`: `(byte)(b+i)`는 227이 아닌 -29, `(int)2.9+1.8`은 3.8, `(int)(2.9+1.8)`은 4
+- `CircleArea`: 반지름 제곱 100과 `(int)PI` 값 3을 곱한 300 출력
+- `SuccessOrFail`: 범위를 벗어난 101 입력 시 재입력 요청, 79점은 불합격
+- `NestedIf`: 4학년 72점은 70점 기준을 넘어 합격
+- `CirclePoint`: 중심 `(2,2)`, 반지름 3인 원에서 점 `(2,5)`는 경계
+
 ## ex00/src/ex00과 차이
 
 | 파일 | basics | ex00/src/ex00 |
@@ -55,3 +73,7 @@
 | CirclePoint.java | 판별 코드 동일 | 거리 계산식 메모 주석 한 줄 추가 |
 
 나머지 파일은 내용 동일.
+
+같은 입력값 50000으로 두 `ExchangeD`를 실행한 결과. 위쪽이 basics, 아래쪽이 ex00/src/ex00 실행 결과로, ex00 쪽은 `double` 변수라 `50000.0원` 출력과 `printf` 형식 줄 추가.
+
+![basics와 ex00 ExchangeD 비교 실행 결과](../docs/images/basics_exchange_diff.png)

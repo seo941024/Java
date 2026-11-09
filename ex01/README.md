@@ -13,3 +13,9 @@
 | 파일 | 내용 | 핵심 코드 |
 |---|---|---|
 | [src/module-info.java](src/module-info.java) | 내용이 빈 모듈 선언 | `module ex01 { }` |
+
+## 실행 결과
+
+`src/module-info.java`를 컴파일하고 `javap`로 클래스 파일을 확인한 결과. 선언 내용이 비어 있어도 모든 모듈에 자동으로 들어가는 `requires java.base` 표시, 모듈 이름 끝의 숫자에 대한 javac 경고 출력.
+
+![ex01 module-info 컴파일과 javap 결과](../docs/images/ex01_module_javap.png)

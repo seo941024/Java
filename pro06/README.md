@@ -41,6 +41,48 @@ HTML 폼에서 보낸 값을 서블릿이 받아 콘솔과 HTML 응답으로 출
 | guguTest2.html | POST `/pro06/guguTest2` | GuguTest2 | 짝수 행과 홀수 행 배경색을 달리한 구구단 표 |
 | 폼 없이 주소창 접속 | GET `/pro06/calc` | CalcServlet | 환율 계산기 폼과 변환 결과 |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 콘솔에만 출력하는 서블릿은 폼 전송 뒤 Tomcat 콘솔 내용을 함께 첨부.
+
+환율 계산기 `/pro06/calc`에서 100000원을 달러와 엔화로 변환한 결과.
+
+| 계산기 폼 | 달러 변환 결과 | 엔화 변환 결과 |
+|---|---|---|
+| ![pro06 환율 계산기 폼](../docs/images/pro06_calc_form.png) | ![pro06 달러 변환 결과](../docs/images/pro06_calc_result.png) | ![pro06 엔화 변환 결과](../docs/images/pro06_calc_result_en.png) |
+
+아이디에 따라 달라지는 로그인 결과 `login_test.html`, `login_test2.html`.
+
+| login_test.html에 hong 입력 | LoginTest 응답 | 아이디 없이 전송 |
+|---|---|---|
+| ![pro06 login_test.html 입력](../docs/images/pro06_logintest_form.png) | ![pro06 LoginTest 응답](../docs/images/pro06_logintest_ok.png) | ![pro06 아이디 없이 전송한 결과](../docs/images/pro06_logintest_empty.png) |
+| **login_test2.html에 admin 입력** | **login_test2.html에 lee 입력** | |
+| ![pro06 관리자 로그인 결과](../docs/images/pro06_logintest2_admin.png) | ![pro06 일반 사용자 로그인 결과](../docs/images/pro06_logintest2_user.png) | |
+
+구구단. 단 입력 폼에 7을 넣어 `guguTest`, 8을 넣어 `guguTest2`로 전송한 결과.
+
+![pro06 구구단 단 입력 폼](../docs/images/pro06_gugu_form.png)
+
+| GuguTest 7단 | GuguTest2 8단 |
+|---|---|
+| ![pro06 GuguTest 7단 표](../docs/images/pro06_gugu.png) | ![pro06 GuguTest2 8단 표](../docs/images/pro06_gugu2.png) |
+
+콘솔 출력 서블릿. 폼 전송 뒤 Tomcat 콘솔에 찍힌 내용.
+
+| 입력 폼 | 전송 뒤 Tomcat 콘솔 출력 |
+|---|---|
+| ![pro06 input.html 입력](../docs/images/pro06_input_form.png) | ![pro06 InputServlet 콘솔 출력](../docs/images/pro06_input_console.png) |
+| ![pro06 input2.html 입력](../docs/images/pro06_input2_form.png) | ![pro06 InputServlet2 콘솔 출력](../docs/images/pro06_input2_console.png) |
+| ![pro06 login.html 입력](../docs/images/pro06_login_form.png) | ![pro06 LoginServlet 콘솔 출력](../docs/images/pro06_login_console.png) |
+
+HTML로 응답하는 로그인과 자바스크립트 입력 검사.
+
+| login2.html 입력 | LoginServlet2 응답 | login5.html 빈 칸으로 로그인 클릭 |
+|---|---|---|
+| ![pro06 login2.html 입력](../docs/images/pro06_login2_form.png) | ![pro06 LoginServlet2 응답](../docs/images/pro06_login2_result.png) | ![pro06 login5.html 입력 검사 알림](../docs/images/pro06_login5_alert.png) |
+
+`login5.html` 화면 아래 `콘솔 출력` 상자는 페이지 요소가 아닌 캡처 때 `alert()` 문구를 옮겨 적은 상자.
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

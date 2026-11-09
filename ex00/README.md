@@ -60,6 +60,22 @@
 | [CirclePoint.java](src/ex00/CirclePoint.java) | 점이 원 안, 경계, 바깥 중 어디인지 판별 | `(x-a)*(x-a)+(y-b)*(y-b) < r*r` |
 | [Triangle.java](src/ex00/Triangle.java) | 세 변의 길이로 삼각형 성립 여부 판정 | `a+b>c && a+c>b && b+c>a` |
 
+### 실행 결과
+
+`ex00` 폴더에서 전체 소스를 `out` 폴더로 컴파일한 뒤 `java -cp out 패키지.클래스`로 실행한 결과. 노란색 줄은 키보드 입력값.
+
+| 출력과 형 변환 | 대입·증감, 비교·논리, 비트 연산 |
+|---|---|
+| ![ex00 출력과 형 변환 실행 결과](../docs/images/ex00_ex00_print_type.png) | ![ex00 연산자 실행 결과](../docs/images/ex00_ex00_operator.png) |
+| **입력값 계산 · 3725초, 123456원, 100000원, 27 입력** | **점수 판정과 학점 계산** |
+| ![ex00 입력값 계산 실행 결과](../docs/images/ex00_ex00_input_calc.png) | ![ex00 점수 판정 실행 결과](../docs/images/ex00_ex00_grade.png) |
+| **switch 문과 Scanner 입력** | **점·원·삼각형 판별** |
+| ![ex00 switch 문과 Scanner 실행 결과](../docs/images/ex00_ex00_switch_scanner.png) | ![ex00 도형 판별 실행 결과](../docs/images/ex00_ex00_geometry.png) |
+
+- `ExchangeD`: `double` 변수라 `+` 연결 줄은 `100000.0원`, `printf("%.0f원은 $%.2f입니다.")` 줄은 `100000원은 $83.33`
+- `NestedIf`: 같은 65점이라도 4학년은 불합격, 2학년은 합격
+- `CoffeePrice`: 메뉴에 없는 녹차 입력 시 "메뉴에 없습니다." 출력
+
 ---
 
 ## ex01 패키지 · 반복문, 배열, 예외 처리, 클래스와 객체
@@ -119,6 +135,41 @@
 | [BookArray.java](src/ex01/BookArray.java) | 책 제목과 저자를 입력받아 객체 배열에 저장 후 출력 | `Book_3 [] book_3 = new Book_3[2]`, `nextLine()` |
 | [StaticMember.java](src/ex01/StaticMember.java) | 환율을 입력받아 정적 필드에 저장하고 정적 메소드로 원화와 달러 환산 | `private static double rate`, `CurrencyConverter.toDollar(1000000)` |
 
+### 실행 결과
+
+반복문 실행 결과. `WhileSample`과 `NewDoWhile`에 같은 입력값 `10 20 30 45 -1`을 넣어 같은 개수 4개, 평균 26.25 확인.
+
+| for, do-while, while, break, continue | Scanner01 누적 합 출력 앞부분 |
+|---|---|
+| ![ex00 ex01 반복문 실행 결과](../docs/images/ex00_ex01_loop.png) | ![ex00 ex01 Scanner01 실행 결과](../docs/images/ex00_ex01_scanner01.png) |
+
+중첩 반복문으로 출력한 구구단.
+
+![ex00 ex01 NestedLoop 실행 결과](../docs/images/ex00_ex01_nestedloop.png)
+
+행·열 인덱스 조건식으로 출력한 `*` 도형.
+
+| MakeStar, MakeBF | MakeWM, MakeWM2 |
+|---|---|
+| ![ex00 ex01 MakeStar, MakeBF 실행 결과](../docs/images/ex00_ex01_star1.png) | ![ex00 ex01 MakeWM, MakeWM2 실행 결과](../docs/images/ex00_ex01_star2.png) |
+
+배열, 예외 처리, 클래스. `DivideByZero`는 나눗수 0 입력 시 예외로 종료, `DevideByZeroHandling`은 같은 입력에서 재입력 요청.
+
+| 배열 매개변수, 배열 반환, 비정방형 배열, 명령행 인자 | 0으로 나누기와 배열 범위 예외 |
+|---|---|
+| ![ex00 ex01 배열 실행 결과](../docs/images/ex00_ex01_array.png) | ![ex00 ex01 0으로 나누기와 배열 예외 실행 결과](../docs/images/ex00_ex01_exception1.png) |
+| **입력 예외와 숫자 변환 예외** | **클래스와 객체** |
+| ![ex00 ex01 입력 예외 실행 결과](../docs/images/ex00_ex01_exception2.png) | ![ex00 ex01 클래스와 객체 실행 결과](../docs/images/ex00_ex01_class.png) |
+
+생성자 오버로딩, `this()` 호출, 객체 배열 입력, 정적 멤버 환율 변환.
+
+![ex00 ex01 생성자와 static 멤버 실행 결과](../docs/images/ex00_ex01_book_static.png)
+
+- `Calc`: 명령행 인자 `1.5 2.5 3`의 합계 7.0
+- `Circle`, `Circle_2`: 반지름이 1부터 10 사이 난수라 실행할 때마다 면적 변화
+- `CircleArray`: 반지름 0부터 4까지의 면적을 `int`로 바꿔 구분자 없이 이어 붙인 `03122850` 출력
+- `StaticMember`: 환율 1350 입력 시 백만원은 약 740.74달러, 100달러는 135000원
+
 ---
 
 ## ex02 패키지 · 상속, 다형성, 인터페이스, 주요 클래스
@@ -168,6 +219,22 @@
 | [MathEx.java](src/ex02/MathEx.java) | 원주율 올림·내림, 제곱근, 지수, 반올림, 1부터 45 사이 정수 난수 출력 | `Math.ceil`, `Math.sqrt`, `(int)(Math.random()*45 + 1)` |
 | [CalendarEx.java](src/ex02/CalendarEx.java) | 현재 날짜·시간과 지정한 날짜를 년, 월, 일, 요일, 오전·오후, 시분초로 출력 | `Calendar.getInstance()`, `cal.get(Calendar.MONTH)+1`, `firstDate.set(2016, 11, 25)` |
 
+### 실행 결과
+
+| 상속과 오버라이딩 | 추상 클래스와 인터페이스 |
+|---|---|
+| ![ex00 ex02 상속과 오버라이딩 실행 결과](../docs/images/ex00_ex02_inherit.png) | ![ex00 ex02 추상 클래스와 인터페이스 실행 결과](../docs/images/ex00_ex02_abstract_interface.png) |
+| **Object 클래스 메소드** | **String, MyString, StringBuffer, StringTokenizer** |
+| ![ex00 ex02 Object 클래스 실행 결과](../docs/images/ex00_ex02_object.png) | ![ex00 ex02 문자열 클래스 실행 결과](../docs/images/ex00_ex02_string.png) |
+
+Wrapper 클래스, 오토박싱, Math, Calendar. `MathEx`의 행운의 번호와 `CalendarEx`의 현재 시각은 실행 시점마다 다른 값.
+
+![ex00 ex02 Wrapper, Math, Calendar 실행 결과](../docs/images/ex00_ex02_wrapper_math.png)
+
+- `InstanceOfEx`: `Professor` 객체는 `Person`, `Researcher`, `Professor` 세 타입 모두에 `instanceof` 참
+- `ObjectPropertyEx`: 해시코드 1192108080의 16진수 값 `470e2030`이 `toString()` 결과의 `@` 뒤에 그대로 표시
+- `WrapperEx`: `Integer.toHexString(28)`은 `1c`, `Integer.toBinaryString(28)`은 `11100`
+
 ---
 
 ## ex03 패키지 · 컬렉션과 제네릭
@@ -201,6 +268,20 @@
 | [GenricMethodExample.java](src/ex03/GenricMethodExample.java) | 스택 요소를 꺼내 새 스택에 넣어 순서를 뒤집는 제네릭 메소드, MyStack.java의 GStack 사용 | `public static <T> GStack<T> reverse(GStack<T> a)` |
 | [FileReaderEx.java](src/ex03/FileReaderEx.java) | 내용이 빈 클래스 선언. 파일 읽기 예제는 ex04 패키지의 같은 이름 파일 | `public class FileReaderEx { }` |
 
+### 실행 결과
+
+| Vector, Iterator, ArrayList | Collections와 HashMap 사전 |
+|---|---|
+| ![ex00 ex03 Vector, ArrayList 실행 결과](../docs/images/ex00_ex03_vector_list.png) | ![ex00 ex03 Collections와 HashMap 실행 결과](../docs/images/ex00_ex03_collections_map.png) |
+
+제네릭 스택 `GStack<T>`에 넣은 값을 꺼낸 순서와 제네릭 메소드로 뒤집은 스택 출력.
+
+![ex00 ex03 제네릭 스택 실행 결과](../docs/images/ex00_ex03_generic.png)
+
+- `VectorEx`: 요소 4개, 기본 용량 10, 합계 108
+- `ArrayListEx`: 입력한 이름 네 개 중 가장 긴 Jackson 출력
+- `HashMapDicEx`: 사전에 없는 java는 없는 단어 안내, exit 입력 시 종료
+
 ---
 
 ## ex04 패키지 · 파일 입출력
@@ -231,3 +312,19 @@
 | [FileEx.java](src/ex04/FileEx.java) | 파일 경로 정보와 파일·디렉토리 구분 출력, `c:\Temp\java_sample` 디렉토리 생성과 이름 변경 전후의 목록 출력 | `getParent()`, `isFile()`, `mkdirs()`, `renameTo()`, `listFiles()` |
 
 파일 경로는 `c:\Temp`, `c:\windows\system.ini` 고정. FileEx, FileWriterEx, FileOutputStreamEx는 `c:\Temp` 아래에 파일이나 디렉토리를 만들거나 이름을 바꾸는 예제.
+
+### 실행 결과
+
+`FileReadHangulSuccess`와 `BufferedIOEx`가 읽는 `c:\Temp\hangul.txt`, `c:\Temp\test2.txt`는 실행 전에 만든 입력 파일.
+
+| FileReader로 system.ini 읽기 | 바이트 스트림 쓰기와 읽기 |
+|---|---|
+| ![ex00 ex04 FileReaderEx 실행 결과](../docs/images/ex00_ex04_filereader.png) | ![ex00 ex04 바이트 스트림 실행 결과](../docs/images/ex00_ex04_bytestream.png) |
+| **FileWriter 저장 뒤 type으로 확인, UTF-8 한글 파일 읽기** | **크기 5 버퍼 출력 스트림** |
+| ![ex00 ex04 FileWriter와 한글 파일 읽기 실행 결과](../docs/images/ex00_ex04_writer_hangul.png) | ![ex00 ex04 BufferedIOEx 실행 결과](../docs/images/ex00_ex04_buffered.png) |
+
+- `FileWriterEx`: 빈 줄을 입력할 때까지 받은 두 줄이 `c:\Temp\test.txt`에 저장
+- `BufferedIOEx`: 5바이트가 찰 때마다 화면에 출력되고, 버퍼에 남은 마지막 `t`와 줄바꿈은 Enter 입력 뒤 `flush()`에서 출력
+- `FileEx`: 아래는 경로 정보와 파일 구분 출력 부분. 이어지는 `c:\Temp` 목록은 PC마다 내용이 달라 생략
+
+![ex00 ex04 FileEx 실행 결과 앞부분](../docs/images/ex00_ex04_fileex.png)

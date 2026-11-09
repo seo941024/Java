@@ -35,6 +35,22 @@
 | sec02.ex01 | `/member2` | JNDI `DataSource` | 회원 목록 조회 |
 | sec02.ex02 | `/member4` | JNDI `DataSource` | 회원 목록 조회, 등록, 삭제 |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 로컬 Oracle `t_member` 테이블을 조회하고, `jdbc/oracle` 커넥션 풀은 Tomcat 컨텍스트 설정에 등록해 실행. 회원 등록과 삭제는 DB 내용을 바꾸므로 폼 입력 화면까지만 확인.
+
+| `/member` DriverManager 연결 목록 | `/member` 요청 때 Tomcat 콘솔 출력 |
+|---|---|
+| ![pro07 member 회원 목록](../docs/images/pro07_member.png) | ![pro07 member 콘솔 출력](../docs/images/pro07_member_console.png) |
+| **`/member2` 커넥션 풀 목록** | **`/member4` 삭제 링크가 붙은 목록** |
+| ![pro07 member2 회원 목록](../docs/images/pro07_member2.png) | ![pro07 member4 회원 목록](../docs/images/pro07_member4.png) |
+| **memberForm.html 입력 화면** | **비밀번호를 비우고 가입하기 클릭** |
+| ![pro07 회원 가입 폼 입력](../docs/images/pro07_memberform.png) | ![pro07 회원 가입 폼 입력 검사 알림](../docs/images/pro07_memberform_alert.png) |
+
+- 콘솔에 드라이버 로딩, 연결 생성, SQL 문 출력 뒤 조회한 회원 수만큼 `MemberVO 생성자 호출` 반복
+- `/member4` 목록의 삭제 링크는 가입일과 같은 칸에 이어 붙어 표시
+- 입력 검사 화면 아래 `콘솔 출력` 상자는 페이지 요소가 아닌 캡처 때 `alert()` 문구를 옮겨 적은 상자.
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

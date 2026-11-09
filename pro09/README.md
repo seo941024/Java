@@ -34,6 +34,42 @@ DB 확인 로그인 sec05.ex01 기준.
 | 자바스크립트 쿠키 | 브라우저 | popupTest.html, popUp.html |
 | 세션 | 서버 | SessionTest, SessionTest2, SessionTest4, SessionTest5, LoginServlet, ShowMember |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 세션 화면은 브라우저를 새로 띄운 상태에서 요청.
+
+세션 정보 `/sess`. 첫 요청에만 새 세션 안내 문구, 같은 브라우저로 다시 요청하면 같은 세션 아이디에 안내 문구 없음.
+
+| 첫 요청 | 다시 요청 |
+|---|---|
+| ![pro09 sess 첫 요청](../docs/images/pro09_sess_new.png) | ![pro09 sess 다시 요청](../docs/images/pro09_sess_again.png) |
+
+`/sess2`에서 기본 유효 시간 1800초를 5초로 바꾼 결과.
+
+![pro09 sess2 유효 시간 변경](../docs/images/pro09_sess2.png)
+
+쿠키 저장과 조회.
+
+| `/set` 쿠키 저장 | 같은 브라우저로 `/get` 쿠키 조회 |
+|---|---|
+| ![pro09 쿠키 저장](../docs/images/pro09_cookie_set.png) | ![pro09 쿠키 조회](../docs/images/pro09_cookie_get.png) |
+
+DB 확인 로그인 `login3.html` → `/login5` → `/show`. 로그인 없이 `/show`를 요청하면 `login3.html`로 redirect된 로그인 폼 표시.
+
+| hong, 1212 입력 | 로그인 성공 | 회원정보 보기 |
+|---|---|---|
+| ![pro09 login3.html 입력](../docs/images/pro09_login3_form.png) | ![pro09 로그인 성공](../docs/images/pro09_login5_ok.png) | ![pro09 회원정보 보기](../docs/images/pro09_show.png) |
+| **비밀번호 0000 입력 결과** | **로그인 없이 `/show` 요청** | |
+| ![pro09 로그인 실패](../docs/images/pro09_login5_fail.png) | ![pro09 로그인 없이 show 요청](../docs/images/pro09_show_nologin.png) | |
+
+세션 속성으로 아이디 유지.
+
+| `/sess4?user_id=hong` 첫 요청 | `/sess4` 다시 요청 |
+|---|---|
+| ![pro09 sess4 첫 요청](../docs/images/pro09_sess4_first.png) | ![pro09 sess4 다시 요청](../docs/images/pro09_sess4_again.png) |
+| **login.html에서 lee로 전송** | **`/login` 다시 요청** |
+| ![pro09 SessionTest5 첫 요청](../docs/images/pro09_login_sess5.png) | ![pro09 SessionTest5 다시 요청](../docs/images/pro09_login_sess5_again.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

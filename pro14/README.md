@@ -31,6 +31,26 @@ JSP에서 표현 언어 EL로 값을 출력하고, 회원 가입 폼 값을 자�
 5. member3.jsp가 `jsp:useBean`과 `jsp:setProperty property="*"`로 같은 요청 매개변수를 새 빈 `m`에 저장
 6. 표현식 `<%=m.getId() %>` 행과 EL `${param.id}` 행으로 같은 값을 두 번 출력
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면.
+
+| `elTest1.jsp` EL 출력 | `test01/login.jsp` 로그인 폼과 회원가입 링크 |
+|---|---|
+| ![pro14 elTest1.jsp](../docs/images/pro14_eltest.png) | ![pro14 login.jsp](../docs/images/pro14_login.png) |
+
+회원 가입 폼에서 결과 화면까지. `memberForm.jsp`에서 입력한 값이 `forward.jsp`를 거쳐 `member3.jsp`에 표시되고, 주소창은 `forward.jsp` 유지. 위 행은 자바빈 getter, 아래 행은 EL `param` 출력.
+
+![pro14 memberForm.jsp 입력](../docs/images/pro14_memberform.png)
+
+![pro14 member3.jsp 결과](../docs/images/pro14_member3.png)
+
+`member1.jsp`, `member2.jsp`에 쿼리 문자열로 값을 넘겨 요청한 결과. `member2.jsp`의 주소 칸은 request 속성 `address`가 없어 빈 칸.
+
+| member1.jsp | member2.jsp |
+|---|---|
+| ![pro14 member1.jsp 결과](../docs/images/pro14_member1.png) | ![pro14 member2.jsp 결과](../docs/images/pro14_member2.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

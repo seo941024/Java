@@ -33,6 +33,14 @@ pro22의 Controller·Service·DAO 계층 구조에 MyBatis를 연결해, Spring�
 | config/action-mybatis.xml | propertyPlaceholderConfigurer, dataSource, sqlSessionFactory, sqlSession, memberDAO | ContextLoaderListener |
 | config/action-service.xml | memberService | ContextLoaderListener |
 
+## 실행 결과
+
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1, MyBatis 3.4.6, MyBatis-Spring 1.3.2 jar와 로컬 Oracle `t_member` 테이블로 실행. 가입과 삭제는 DB 내용을 바꾸므로 목록과 입력 화면까지만 확인.
+
+| `/member/listMembers.do` 회원 목록 | `/member/memberForm.do` 입력 화면 |
+|---|---|
+| ![pro24 회원 목록](../docs/images/pro24_list.png) | ![pro24 회원 가입 폼 입력](../docs/images/pro24_memberform.png) |
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

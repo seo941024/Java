@@ -22,6 +22,12 @@
 
 `/second`는 같은 방식으로 서블릿 이름 `bbb`를 거쳐 SecondServlet에 연결.
 
+## 실행 결과
+
+Tomcat 9.0.118에 pro05만 배포한 뒤 `/pro05/first`를 두 번, `/pro05/second`를 한 번 요청하고 서버를 종료할 때까지 콘솔에 찍힌 출력. 첫 요청에만 `init()`, 요청마다 `doGet()`, 종료 때 `destroy()` 호출 확인. 브라우저 화면은 응답 본문이 없어 빈 페이지.
+
+![pro05 서블릿 생명주기 콘솔 출력](../docs/images/pro05_lifecycle_console.png)
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |

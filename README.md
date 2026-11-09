@@ -191,4 +191,4 @@ java -Dfile.encoding=UTF-8 -cp out ex01.ForSample
 - `CircleArea.java`: 원주율을 `int`로 변환해 314가 아닌 300 출력. 올바른 계산식을 주석으로 남긴 형 변환 손실 예제라 유지
 - `pro17`: 컨트롤러가 `/test03/memberForm.jsp`로 이동하지만 해당 JSP 파일 없음
 - `pro10/sec04/ex02/LoginTest2.java`: 응답 HTML 출력이 `<script>` 태그 중간에서 끝남
-- 웹 애플리케이션은 Tomcat과 Oracle 환경에서 실행하지 않아 화면 결과 미확인
+- 웹 애플리케이션은 Tomcat 9.0.118과 로컬 Oracle 19c에서 실행해 폴더마다 README에 실행 화면 첨부. pro27은 MemberVO 빈 누락과 Tiles 2.2 DTD 주소 만료로 저장소 그대로는 실행 실패, 자세한 내용은 [pro27](pro27) README
