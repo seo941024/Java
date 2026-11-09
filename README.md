@@ -189,6 +189,13 @@ java -Dfile.encoding=UTF-8 -cp out ex01.ForSample
 - `ex00/src/ex00/ExchangeD.java`: `double` 값을 `%d` 형식으로 출력해 `IllegalFormatConversionException` 발생, `%.0f`로 수정
 - `ChangeCalc.java`: 50원 단위 결과를 "백원"으로 출력, "오십원"으로 수정
 - `CircleArea.java`: 원주율을 `int`로 변환해 314가 아닌 300 출력. 올바른 계산식을 주석으로 남긴 형 변환 손실 예제라 유지
-- `pro17`: 컨트롤러가 `/test03/memberForm.jsp`로 이동하지만 해당 JSP 파일 없음
+- `CircleArray.java`: 면적을 구분자 없이 이어 붙여 `03122850` 출력, 공백으로 구분해 출력하도록 수정
+- `InstanceOfEx.java`: 출력 문구의 `Resarcher` 오타를 `Researcher`로 수정
+- `pro06/LoginSurvlet5.java`: login5.html이 POST로 전송하지만 `doGet()`만 있어 405 발생, `doPost()`로 수정
+- `pro09`: SessionTest5 링크 주소가 `'+url+'` 문자열 그대로 출력되어 `encodeURL()` 결과를 이어 붙이도록 수정, SessionTest4의 확인 링크가 매핑 없는 `login3`을 가리켜 `sess4`로 수정, popUp.html의 `setPopUpStart` 호출이 함수 이름 `setPopupStart`와 달라 쿠키가 저장되지 않아 호출 이름 수정
+- `pro10/EncoderFilter.java`: 컨텍스트 경로가 포함된 URI로 `getRealPath()`를 호출해 실제 경로에 `pro10`이 두 번 들어가 컨텍스트 경로를 뺀 주소로 수정
+- `pro17`: 컨트롤러가 이동하는 `/test03/memberForm.jsp` 파일이 없어 404 발생, 회원 가입 폼 JSP 추가
+- `pro21`: SimpleUrlController가 뷰 이름 `index.jsp`를 반환해 `/test/index.jsp.jsp`를 찾다 404 발생, `index`로 수정. login.jsp가 `${id}`, `${pwd}`를 출력해 로그인 결과 칸이 비어 `${userID}`, `${passwd}`로 수정
+- `pro27`: MemberVO에 `@Component`가 없어 컨트롤러의 `@Autowired` 주입 실패, `@Component("memberVO")` 추가. Tiles 정의 파일이 Tiles 2.2.2 jar에 없는 2.2 DTD를 선언해 지금은 404인 외부 DTD 주소를 읽다 실패, jar에 들어 있는 2.1 DTD 선언으로 수정
 - `pro10/sec04/ex02/LoginTest2.java`: 응답 HTML 출력이 `<script>` 태그 중간에서 끝남
-- 웹 애플리케이션은 Tomcat 9.0.118과 로컬 Oracle 19c에서 실행해 폴더마다 README에 실행 화면 첨부. pro27은 MemberVO 빈 누락과 Tiles 2.2 DTD 주소 만료로 저장소 그대로는 실행 실패, 자세한 내용은 [pro27](pro27) README
+- 웹 애플리케이션은 Tomcat 9.0.118과 로컬 Oracle 19c에서 실행해 폴더마다 README에 실행 화면 첨부

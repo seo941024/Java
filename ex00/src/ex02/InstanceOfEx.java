@@ -18,7 +18,7 @@ public class InstanceOfEx {
 	}
 	public static void main(String[] args) {
 		System.out.print("new Student() ->\t"); print(new Student());
-		System.out.print("new Resarcher() ->\t"); print(new Researcher());
+		System.out.print("new Researcher() ->\t"); print(new Researcher());
 		System.out.print("new Professor() ->\t"); print(new Professor());
 	}
 }

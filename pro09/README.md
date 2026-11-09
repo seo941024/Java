@@ -62,13 +62,17 @@ DB 확인 로그인 `login3.html` → `/login5` → `/show`. 로그인 없이 `/
 | **비밀번호 0000 입력 결과** | **로그인 없이 `/show` 요청** | |
 | ![pro09 로그인 실패](../docs/images/pro09_login5_fail.png) | ![pro09 로그인 없이 show 요청](../docs/images/pro09_show_nologin.png) | |
 
-세션 속성으로 아이디 유지.
+세션 속성으로 아이디 유지. 첫 요청 화면의 로그인 상태 확인 링크를 눌러 다음 요청 확인. SessionTest5의 링크 주소는 `encodeURL()` 결과인 `login;jsessionid=세션아이디` 형태.
 
-| `/sess4?user_id=hong` 첫 요청 | `/sess4` 다시 요청 |
+| `/sess4?user_id=hong` 첫 요청 | 링크를 눌러 `/sess4` 다시 요청 |
 |---|---|
 | ![pro09 sess4 첫 요청](../docs/images/pro09_sess4_first.png) | ![pro09 sess4 다시 요청](../docs/images/pro09_sess4_again.png) |
-| **login.html에서 lee로 전송** | **`/login` 다시 요청** |
+| **login.html에서 lee로 전송** | **링크를 눌러 `/login` 다시 요청** |
 | ![pro09 SessionTest5 첫 요청](../docs/images/pro09_login_sess5.png) | ![pro09 SessionTest5 다시 요청](../docs/images/pro09_login_sess5_again.png) |
+
+자바스크립트 쿠키 팝업창 `popUp.html`. 체크박스를 선택하면 `notShowPop=true` 쿠키가 저장되어 이후 popupTest.html에서 팝업창을 열지 않는 구조.
+
+![pro09 popUp.html 팝업창](../docs/images/pro09_popup.png)
 
 ## 파일별 역할
 

@@ -18,7 +18,7 @@ public class LoginSurvlet5 extends HttpServlet
 	public void init() throws ServletException {
 		System.out.println("init 메서드 호출");
 	}
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");

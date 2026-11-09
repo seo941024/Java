@@ -39,15 +39,7 @@ Apache Tiles로 헤더, 사이드 메뉴, 본문, 푸터를 한 레이아웃에 
 
 ## 실행 결과
 
-저장소 코드 그대로 Tomcat 9.0.118에 배포하면 DispatcherServlet 초기화 실패. 컨트롤러의 `@Autowired private MemberVO memberVO` 주입 대상인 MemberVO 빈이 없어 모든 `.do` 요청이 500 응답.
-
-![pro27 저장소 코드 그대로 배포한 결과](../docs/images/pro27_bean_error.png)
-
-아래 화면은 캡처용 배포 사본에서 다음 부분을 보완해 실행한 결과. 저장소의 소스 코드와 설정 파일은 그대로.
-
-- 배포 사본 `action-servlet.xml`에 `<bean id="memberVO" class="com.myspring.pro27.member.vo.MemberVO" />` 한 줄 추가
-- 배포 사본 `tiles_member.xml`의 DOCTYPE을 Tiles 2.2.2 jar에 들어 있는 2.1 DTD로 변경. 2.2 DTD 주소 `http://tiles.apache.org/dtds/tiles-config_2_2.dtd`가 현재 404 응답이라 정의 파일 읽기 실패
-- log4j는 `D:\JavaProgram\logs` 파일 appender를 뺀 콘솔 appender 설정으로 실행
+Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1, MyBatis 3.4.6, MyBatis-Spring 1.3.2, Tiles 2.2.2 jar와 로컬 Oracle `t_member` 테이블로 실행. 가입과 삭제는 DB 내용을 바꾸므로 목록과 입력 화면까지만 확인.
 
 | `/main.do` 메인 화면 | `/member/listMembers.do` 회원 목록 |
 |---|---|
@@ -73,11 +65,11 @@ Apache Tiles로 헤더, 사이드 메뉴, 본문, 푸터를 한 레이아웃에 
 | [member/service/MemberServiceImpl.java](src/main/java/com/myspring/pro27/member/service/MemberServiceImpl.java) | `@Service` 빈, 로그인 조회를 DAO에 위임 | `return memberDAO.loginById(memberVO)` |
 | [member/dao/MemberDAO.java](src/main/java/com/myspring/pro27/member/dao/MemberDAO.java) | DAO 인터페이스, 아이디·비밀번호 조회 메소드 추가 | `MemberVO loginById(MemberVO memberVO)` |
 | [member/dao/MemberDAOImpl.java](src/main/java/com/myspring/pro27/member/dao/MemberDAOImpl.java) | `@Repository` 빈, SqlSession으로 목록·삽입·삭제·로그인 조회 | `sqlSession.selectOne("mapper.member.loginById", memberVO)` |
-| [member/vo/MemberVO.java](src/main/java/com/myspring/pro27/member/vo/MemberVO.java) | 회원 VO | `MemberVO(String id, String pwd, String name, String email)` |
+| [member/vo/MemberVO.java](src/main/java/com/myspring/pro27/member/vo/MemberVO.java) | `@Component`로 등록한 회원 VO, 컨트롤러에서 `@Autowired` 필드로 주입 | `@Component("memberVO")`, `MemberVO(String id, String pwd, String name, String email)` |
 | [log4j.xml](src/main/java/log4j.xml) | 콘솔 appender와 날짜별 파일 appender, `com.myspring.pro27` 로거의 info 레벨 설정. 로그 파일 경로는 `D:\JavaProgram\logs\output.log` 고정 | `ConsoleAppender`, `DailyRollingFileAppender`, `<level value="info" />` |
 | [mybatis/mappers/member.xml](src/main/java/mybatis/mappers/member.xml) | 목록 조회, 삽입, 삭제 SQL과 로그인 조회 `loginById` | `select * from t_member where id = #{id} and pwd = #{pwd}` |
 | [mybatis/model/modelConfig.xml](src/main/java/mybatis/model/modelConfig.xml) | VO 타입 별칭 설정 | `alias="memberVO"` |
-| [tiles/tiles_member.xml](src/main/java/tiles/tiles_member.xml) | 공통 레이아웃 정의와 화면별 상속 정의 | `<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">`, `extends="baseLayout"` |
+| [tiles/tiles_member.xml](src/main/java/tiles/tiles_member.xml) | 공통 레이아웃 정의와 화면별 상속 정의, Tiles 2.2.2 jar에 들어 있는 2.1 DTD 선언 | `<definition name="baseLayout" template="/WEB-INF/views/common/layout.jsp">`, `extends="baseLayout"` |
 | [action-servlet.xml](src/main/webapp/WEB-INF/action-servlet.xml) | 애너테이션 처리 빈, TilesConfigurer, Tiles 뷰 리졸버, `component-scan` 설정 | `TilesConfigurer`, `<property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />` |
 | [config/action-mybatis.xml](src/main/webapp/WEB-INF/config/action-mybatis.xml) | 커넥션 풀, SqlSessionFactoryBean, SqlSessionTemplate 등록 | `classpath:mybatis/mappers/*.xml` |
 | [config/jdbc.properties](src/main/webapp/WEB-INF/config/jdbc.properties) | 드라이버 클래스, 접속 URL, 계정 값을 담은 속성 파일 | `jdbc.url` |

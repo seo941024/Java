@@ -36,7 +36,7 @@ public class SessionTest5 extends HttpServlet {
             if(user_id != null) { // ID값이 파라미터로 넘어왔는지 확인
                 session.setAttribute("user_id", user_id);
                 String url=response.encodeURL("login");
-                out.println("<a href='+url+'>로그인 상태 확인</a>");
+                out.println("<a href='" + url + "'>로그인 상태 확인</a>");
             } else {
                 out.print("<a href='login.html'>다시 로그인 하세요</a>");
                 session.invalidate();

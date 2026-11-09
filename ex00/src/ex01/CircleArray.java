@@ -19,6 +19,6 @@ public class CircleArray {
 		c[i] = new Circle_4(i);
 	
 	for(int i=0; i<c.length; i++)
-		System.out.print((int)(c[i].getArea())+"");
+		System.out.print((int)(c[i].getArea())+" ");
 		}
 }

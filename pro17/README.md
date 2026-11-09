@@ -51,6 +51,10 @@ Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 로컬 Oracle `t_m
 |---|---|
 | ![pro17 회원 수정 폼](../docs/images/pro17_modform.png) | ![pro17 sec01 회원 목록](../docs/images/pro17_sec01_list.png) |
 
+목록 화면의 회원 가입창 가기 링크로 연 `/memberForm.do` 가입 폼. 가입하기를 누르면 `/addMember.do`로 전송.
+
+![pro17 회원 가입 폼 입력](../docs/images/pro17_memberform.png)
+
 ## 파일별 역할
 
 | 파일 | 역할 | 핵심 코드 |
@@ -64,5 +68,6 @@ Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. 로컬 Oracle `t_m
 | [sec03/brd01/ArticleVO.java](src/main/java/sec03/brd01/ArticleVO.java) | 게시글 VO. 계층 수준, 글 번호, 부모 글 번호, 제목, 내용, 이미지 파일 이름, 작성자, 작성일 필드와 생성자만 정의 | `private int parentNO`, `private String imageFileName` |
 | [test01/listMembers.jsp](src/main/webapp/test01/listMembers.jsp) | 회원 목록이 비었으면 안내 문구, 있으면 JSTL 반복으로 표 출력 | `<c:when test="${empty membersList}">`, `<c:forEach var="mem" items="${membersList}">` |
 | [test03/listMembers.jsp](src/main/webapp/test03/listMembers.jsp) | `msg` 값에 따라 등록·수정·삭제 알림, 행마다 수정·삭제 링크와 가입 링크 | `<c:when test="${msg=='modified'}">`, `${contextPath}/modMemberForm.do?id=${mem.id}` |
+| [test03/memberForm.jsp](src/main/webapp/test03/memberForm.jsp) | 아이디, 비밀번호, 이름, 이메일 입력 폼, POST로 `/addMember.do` 전송 | `action="${contextPath}/addMember.do"`, `name="id"` |
 | [test03/modMemberForm.jsp](src/main/webapp/test03/modMemberForm.jsp) | 조회한 회원 값을 채운 수정 폼, 아이디와 가입일은 비활성 입력칸 | `value="${memInfo.pwd}"`, `disabled`, `action="${contextPath}/modMember.do?id=${memInfo.id}"` |
 | [web.xml](src/main/webapp/WEB-INF/web.xml) | 시작 파일 목록만 둔 설정 파일 | `<welcome-file-list>` |

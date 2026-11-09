@@ -9,6 +9,6 @@ import org.springframework.web.servlet.mvc.Controller;
 public class SimpleUrlController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse reponse) throws Exception {
-		return new ModelAndView("index.jsp");
+		return new ModelAndView("index");
 	}
 }

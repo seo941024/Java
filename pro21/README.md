@@ -32,7 +32,7 @@ DispatcherServlet이 `*.do` 요청을 받아 XML에 등록한 컨트롤러로 �
 
 | 요청 주소 | 컨트롤러와 메소드 | 넘기는 값 | 뷰 |
 |---|---|---|---|
-| `/test/index.do` | SimpleUrlController `handleRequest()` | 없음 | 뷰 이름 `index.jsp` |
+| `/test/index.do` | SimpleUrlController `handleRequest()` | 없음 | 뷰 이름 `index`, index.jsp |
 | `/test/login.do` | UserController `login()` | `userID`, `passwd` | login.jsp |
 | `/test/memberForm.do` | UserController `memberForm()` | 없음 | memberForm.jsp |
 | `/test/memberinfo.do` | UserController `memberinfo()` | `id`, `pwd`, `name`, `email` | memberinfo.jsp |
@@ -41,7 +41,11 @@ DispatcherServlet이 `*.do` 요청을 받아 XML에 등록한 컨트롤러로 �
 
 Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 라이브러리는 4.1.1 버전 jar로 실행.
 
-로그인 폼 `/test/loginForm.jsp`에서 `/test/login.do` 요청. 컨트롤러는 `userID`, `passwd` 이름으로 값을 넘기지만 login.jsp는 `${id}`, `${pwd}`를 출력해 결과 표의 칸이 빈 상태.
+SimpleUrlController가 반환한 뷰 이름 `index`에 뷰 리졸버가 `/test/`와 `.jsp`를 붙여 연 `/test/index.do` 화면.
+
+![pro21 index.do 화면](../docs/images/pro21_index.png)
+
+로그인 폼 `/test/loginForm.jsp`에서 `/test/login.do` 요청. 컨트롤러가 넘긴 `userID`, `passwd` 값을 login.jsp가 결과 표에 출력.
 
 | 로그인 폼 입력 | `/test/login.do` 결과 |
 |---|---|
@@ -61,13 +65,13 @@ Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 라이브�
 
 | 파일 | 역할 | 핵심 코드 |
 |---|---|---|
-| [SimpleUrlController.java](src/main/java/com/spring/ex01/SimpleUrlController.java) | `Controller` 인터페이스를 구현해 뷰 이름 `index.jsp`를 담은 ModelAndView 반환 | `implements Controller`, `return new ModelAndView("index.jsp")` |
+| [SimpleUrlController.java](src/main/java/com/spring/ex01/SimpleUrlController.java) | `Controller` 인터페이스를 구현해 뷰 이름 `index`를 담은 ModelAndView 반환 | `implements Controller`, `return new ModelAndView("index")` |
 | [UserController.java](src/main/java/com/spring/ex02/UserController.java) | 로그인, 가입 폼, 가입 정보 처리 메소드와 뷰 이름 추출 메소드. 추출 단계마다 contextPath, uri, fileName을 콘솔 출력 | `extends MultiActionController`, `mav.addObject("userID", userID)`, `getViewName(request)` |
 | [action-servlet.xml](src/main/webapp/WEB-INF/action-servlet.xml) | SimpleUrlController와 UserController 빈, URL 매핑, 메소드 이름 매핑, 뷰 리졸버 등록 | `SimpleUrlHandlerMapping`, `PropertiesMethodNameResolver`, `<property name="prefix" value="/test/" />` |
 | [web.xml](src/main/webapp/WEB-INF/web.xml) | DispatcherServlet `action`을 `*.do`에 매핑, 서버 시작 시 생성 | `DispatcherServlet`, `<load-on-startup>1</load-on-startup>` |
 | [test/index.jsp](src/main/webapp/test/index.jsp) | "Hello Spring" 문구 화면 | `<h1>index.jsp 파일 입니다.</h1>` |
 | [test/loginForm.jsp](src/main/webapp/test/loginForm.jsp) | 아이디 `userID`, 비밀번호 `passwd`를 POST로 `/test/login.do` 전송하는 폼 | `action="${contextPath}/test/login.do"` |
-| [test/login.jsp](src/main/webapp/test/login.jsp) | `/test/login.do`의 결과 화면, 아이디와 비밀번호를 `${id}`, `${pwd}`로 출력하는 표 | `${id}`, `${pwd}` |
+| [test/login.jsp](src/main/webapp/test/login.jsp) | `/test/login.do`의 결과 화면, 아이디와 비밀번호를 `${userID}`, `${passwd}`로 출력하는 표 | `${userID}`, `${passwd}` |
 | [test/result.jsp](src/main/webapp/test/result.jsp) | 아이디와 비밀번호를 `${userID}`, `${passwd}`로 출력하는 결과 표 | `${userID}`, `${passwd}` |
 | [test/memberForm.jsp](src/main/webapp/test/memberForm.jsp) | 회원 가입 폼, POST로 `/test/memberinfo.do` 전송 | `action="${contextPath}/test/memberinfo.do"` |
 | [test/memberinfo.jsp](src/main/webapp/test/memberinfo.jsp) | 컨트롤러가 넘긴 회원 정보를 표로 출력 | `${id}`, `${name}`, `${email}` |

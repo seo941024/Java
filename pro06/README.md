@@ -34,7 +34,7 @@ HTML 폼에서 보낸 값을 서블릿이 받아 콘솔과 HTML 응답으로 출
 | input2.html | GET `input2` | InputServlet2 | 모든 매개변수 이름과 값을 콘솔 출력 |
 | login.html | GET `login` | LoginServlet | 아이디, 비밀번호를 콘솔 출력 |
 | login2.html | GET `login2` | LoginServlet2 | 아이디, 비밀번호를 HTML로 출력 |
-| login5.html | 입력 검사 후 POST `login5` | LoginSurvlet5 | 아이디, 비밀번호, hidden 주소를 HTML로 출력. 처리 메소드는 `doGet()` |
+| login5.html | 입력 검사 후 POST `login5` | LoginSurvlet5 | 아이디, 비밀번호, hidden 주소를 HTML로 출력. 처리 메소드는 `doPost()` |
 | login_test.html | POST `/pro06/loginTest` | LoginTest | 아이디가 있으면 환영 문구, 없으면 로그인 창 링크 |
 | login_test2.html | POST `/pro06/loginTest2` | LoginTest2 | `admin`이면 관리자 문구와 회원정보 수정·삭제 버튼, 다른 아이디면 환영 문구 |
 | guguTest.html | POST `/pro06/guguTest` | GuguTest | 입력한 단의 구구단 표 |
@@ -82,6 +82,12 @@ HTML로 응답하는 로그인과 자바스크립트 입력 검사.
 | ![pro06 login2.html 입력](../docs/images/pro06_login2_form.png) | ![pro06 LoginServlet2 응답](../docs/images/pro06_login2_result.png) | ![pro06 login5.html 입력 검사 알림](../docs/images/pro06_login5_alert.png) |
 
 `login5.html` 화면 아래 `콘솔 출력` 상자는 페이지 요소가 아닌 캡처 때 `alert()` 문구를 옮겨 적은 상자.
+
+login5.html에 아이디와 비밀번호를 모두 넣고 로그인을 누르면 입력 검사를 통과해 POST로 전송되고, hidden 주소까지 함께 출력.
+
+| login5.html 입력 | LoginSurvlet5 응답 |
+|---|---|
+| ![pro06 login5.html 입력](../docs/images/pro06_login5_form.png) | ![pro06 LoginSurvlet5 응답](../docs/images/pro06_login5_result.png) |
 
 ## 파일별 역할
 

@@ -35,7 +35,7 @@ public class SessionTest4 extends HttpServlet {
         if (session.isNew()) {
             if(user_id != null) { // ID값이 파라미터로 넘어왔는지 확인
                 session.setAttribute("user_id", user_id);
-                out.println("<a href='login3'>로그인 상태 확인</a>");
+                out.println("<a href='sess4'>로그인 상태 확인</a>");
             } else {
                 out.print("<a href='login3.html'>다시 로그인 하세요</a>");
                 session.invalidate();

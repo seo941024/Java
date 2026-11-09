@@ -27,7 +27,7 @@ public class EncoderFilter implements Filter {
 		request.setCharacterEncoding("utf-8");
 		String context = ((HttpServletRequest)request).getContextPath();
 		String pathinfo = ((HttpServletRequest)request).getRequestURI();
-		String realPath = request.getRealPath(pathinfo);
+		String realPath = request.getRealPath(pathinfo.substring(context.length()));
 		
 		String mesg = " Context 정보: "+context 
 				+"\n URI 정보: " +pathinfo

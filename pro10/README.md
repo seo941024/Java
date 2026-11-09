@@ -63,7 +63,7 @@ URL 패턴별 서블릿.
 | [sec02/ex01/TestServlet1.java](src/main/java/sec02/ex01/TestServlet1.java) | 정확한 경로 `/first/test1` 매핑 | `@WebServlet("/first/test1")` |
 | [sec02/ex01/TestServlet2.java](src/main/java/sec02/ex01/TestServlet2.java) | `/first/` 아래 모든 주소 매핑, 요청 경로 정보 출력 | `@WebServlet("/first/*")`, `request.getServletPath()` |
 | [sec02/ex01/TestServlet3.java](src/main/java/sec02/ex01/TestServlet3.java) | `.do`로 끝나는 모든 주소 매핑, 요청 경로 정보 출력 | `@WebServlet("*.do")` |
-| [sec03/ex01/EncoderFilter.java](src/main/java/sec03/ex01/EncoderFilter.java) | 모든 요청에 UTF-8 인코딩 지정, 컨텍스트 경로와 실제 경로 콘솔 출력 | `implements Filter`, `@WebFilter("/*")`, `request.getRealPath(pathinfo)`, `chain.doFilter()` |
+| [sec03/ex01/EncoderFilter.java](src/main/java/sec03/ex01/EncoderFilter.java) | 모든 요청에 UTF-8 인코딩 지정, 컨텍스트 경로와 실제 경로 콘솔 출력 | `implements Filter`, `@WebFilter("/*")`, `request.getRealPath(pathinfo.substring(context.length()))`, `chain.doFilter()` |
 | [sec03/ex01/LoginTest.java](src/main/java/sec03/ex01/LoginTest.java) | `/login` POST 요청의 이름과 비밀번호 출력, 인코딩은 필터가 담당 | `//request.setChartacterEncoding("utf-8")`, `getParameter("user_name")` |
 | [sec04/ex02/LoginImpl.java](src/main/java/sec04/ex02/LoginImpl.java) | 세션에 저장되거나 빠질 때 접속자 수를 늘리고 줄이는 리스너 클래스 | `implements HttpSessionBindingListener`, `valueBound()`, `++total_user` |
 | [sec04/ex02/LoginTest2.java](src/main/java/sec04/ex02/LoginTest2.java) | `/login2` POST 요청에 새 세션이면 LoginImpl 객체를 세션에 저장해 `valueBound()` 호출. 응답은 `<script>` 시작 태그까지 작성 | `new LoginImpl(user_id, user_pw)`, `session.setAttribute("loginUser", loginUser)` |

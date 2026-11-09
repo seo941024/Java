@@ -17,8 +17,8 @@
 			<td>비밀번호</td>
 		</tr>
 		<tr align="center">
-			<td>${id}</td>
-			<td>${pwd}</td>
+			<td>${userID}</td>
+			<td>${passwd}</td>
 		</tr>
 		<tr align="center">
 				<td colspan="2">
