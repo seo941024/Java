@@ -33,6 +33,10 @@ pro22의 Controller·Service·DAO 계층 구조에 MyBatis를 연결해, Spring�
 | config/action-mybatis.xml | propertyPlaceholderConfigurer, dataSource, sqlSessionFactory, sqlSession, memberDAO | ContextLoaderListener |
 | config/action-service.xml | memberService | ContextLoaderListener |
 
+서버 시작 때 Tomcat 로그. `ContextLoaderListener`가 `config/action-mybatis.xml`, `config/action-service.xml`과 `jdbc.properties`를 읽은 뒤, DispatcherServlet이 `action-servlet.xml`을 읽어 `/member/*.do`를 memberController에 매핑하는 순서.
+
+![pro24 서버 시작 때 Spring 로그](../docs/images/pro24_startup_log.png)
+
 ## 실행 결과
 
 Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1, MyBatis 3.4.6, MyBatis-Spring 1.3.2 jar와 로컬 Oracle `t_member` 테이블로 실행. 가입과 삭제는 DB 내용을 바꾸므로 목록과 입력 화면까지만 확인.
@@ -40,6 +44,10 @@ Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1, MyBa
 | `/member/listMembers.do` 회원 목록 | `/member/memberForm.do` 입력 화면 |
 |---|---|
 | ![pro24 회원 목록](../docs/images/pro24_list.png) | ![pro24 회원 가입 폼 입력](../docs/images/pro24_memberform.png) |
+
+회원 목록 요청 때 SqlSessionTemplate이 매퍼 id `mapper.member.selectAllMemberList`로 실행한 SQL과 조회 행 수. 실행용 Tomcat의 `logging.properties`에서 `mapper.member` 로그 수준을 FINE으로 올려 확인한 MyBatis 로그.
+
+![pro24 회원 목록 요청 때 MyBatis SQL 로그](../docs/images/pro24_sql_log.png)
 
 ## 파일별 역할
 

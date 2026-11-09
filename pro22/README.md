@@ -40,6 +40,10 @@ Controller·Service·DAO를 인터페이스와 구현 클래스로 나누고 XML
 | memberDAO | MemberDAOImpl | dataSource | config/action-dataSource.xml |
 | dataSource | `SimpleDriverDataSource` | jdbc.properties 값 | config/action-dataSource.xml |
 
+서버 시작 때 Tomcat 로그. `ContextLoaderListener`가 `config/action-service.xml`, `config/action-dataSource.xml`을 읽고 `jdbc.properties` 값을 채운 뒤 `/member/*.do`를 memberController에 매핑, 이어서 DispatcherServlet이 `action-servlet.xml`을 읽는 순서.
+
+![pro22 서버 시작 때 Spring 로그](../docs/images/pro22_startup_log.png)
+
 ## 실행 결과
 
 Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1 jar와 로컬 Oracle `t_member` 테이블로 실행. 가입하기 전송은 DB에 행을 추가하므로 입력 화면까지만 확인.
@@ -47,6 +51,10 @@ Tomcat 9.0.118에 배포해 브라우저로 요청한 화면. Spring 4.1.1 jar�
 | `/member/listMembers.do` 회원 목록 | 회원가입 링크로 연 `/member/memberForm.do` |
 |---|---|
 | ![pro22 회원 목록](../docs/images/pro22_list.png) | ![pro22 회원 가입 폼 입력](../docs/images/pro22_memberform.png) |
+
+회원 목록 요청 때 `JdbcTemplate`이 실행한 SQL. 실행용 Tomcat의 `logging.properties`에서 `JdbcTemplate` 로그 수준을 FINE으로 올려 확인한 로그.
+
+![pro22 회원 목록 요청 때 JdbcTemplate SQL 로그](../docs/images/pro22_sql_log.png)
 
 ## 파일별 역할
 
