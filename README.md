@@ -172,7 +172,7 @@ java -Dfile.encoding=UTF-8 -cp out ex01.ForSample
 
 1. Eclipse에서 `pro` 폴더를 Dynamic Web Project로 가져오기
 2. `javax.servlet` 패키지를 사용하므로 Tomcat 9 이하 서버에 프로젝트 추가
-   - `WEB-INF/lib`의 라이브러리 jar는 저장소에서 제외. Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2, Oracle JDBC 드라이버 등을 별도로 받아 넣기
+   - `WEB-INF/lib`의 라이브러리 jar는 저장소에서 제외. Spring 3.0.6, MyBatis 3.0.5, Apache Tiles 2.2.2, Oracle JDBC 드라이버 등을 받아 넣기
 3. Oracle에 `t_member` 테이블 준비. 접속 정보는 교재 예제 계정 `scott`, 로컬 `testdb` 기준이며 `jdbc.properties` 또는 DAO에서 수정
 4. 서버 실행 후 `http://localhost:8080/프로젝트이름/요청경로` 접속
 

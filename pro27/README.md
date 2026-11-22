@@ -15,7 +15,7 @@ Apache Tiles로 헤더, 사이드 메뉴, 본문, 푸터를 한 레이아웃에 
 | `UrlBasedViewResolver`와 `TilesView` | 컨트롤러가 반환한 뷰 이름을 같은 이름의 Tiles 정의로 해석하는 뷰 설정. `main`, `/member/listMembers` |
 | 세션 로그인 | 로그인 성공 시 `session.setAttribute("member", loginVO)`와 `isLogOn` 저장, 로그아웃 시 `removeAttribute()`로 삭제. 헤더 JSP가 세션 값으로 문구 전환 |
 | 실패 결과 전달 | 로그인 실패 시 `redirect:/member/loginForm.do?result=loginFailed`, 폼 메소드가 `@RequestParam(value = "result", required = false)`로 받아 뷰에 전달, JSP가 알림창 표시 |
-| `@ModelAttribute` 로그인 | 로그인 폼의 `id`, `pwd`를 MemberVO에 바로 담아 매퍼의 `parameterType="memberVO"` 조회에 사용 |
+| `@ModelAttribute` 로그인 | 로그인 폼의 `id`, `pwd`를 MemberVO에 담아 매퍼의 `parameterType="memberVO"` 조회에 사용 |
 | log4j | 로그를 레벨별로 콘솔과 파일에 기록하는 라이브러리. `log4j.xml`에 콘솔 출력과 날짜별 파일 출력 설정, `logger.info()`로 뷰 이름 기록 |
 
 ## 요청 흐름
